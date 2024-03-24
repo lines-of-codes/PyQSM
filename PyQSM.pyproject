@@ -1,0 +1,11 @@
+{
+    "files": [
+        "app/mainwindow.py",
+        "app/mainwindow.ui",
+        "app/createserverpage.ui",
+        "app/resource.qrc",
+        "app/CreateServerPage.py",
+        "app/PaperMCApi.py",
+        "app/PurpurMCApi.py"
+    ]
+}

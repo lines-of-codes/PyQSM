@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/imgs">
+        <file>icons/cloud-network.svg</file>
+        <file>icons/download.svg</file>
+        <file>icons/minecraft_logo.svg</file>
+        <file>icons/papermc-logomark.png</file>
+        <file>icons/plus.svg</file>
+        <file>icons/velocity-blue.svg</file>
+        <file>icons/purpur.svg</file>
+        <file>icons/NeoForged.png</file>
+    </qresource>
+</RCC>
