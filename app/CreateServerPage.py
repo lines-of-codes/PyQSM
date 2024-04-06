@@ -36,7 +36,7 @@ class CreateServerPage(QtWidgets.QWidget):
 
         serverName = self.ui.serverName.text().strip()
         MISSING_INFO = "Information required"
-        if not serverName or re.search("[@_!#$%^&*()<>?/\|}{~:]", serverName):
+        if not serverName or re.search(r"[@_!#$%^&*()<>?/\|}{~:]", serverName):
             return QMessageBox.critical(self, MISSING_INFO, "The input cannot contain any special symbols and must contain at least one character that is not a whitespace")
 
         jarFileLocation = self.ui.jarFileLocation.text().strip()

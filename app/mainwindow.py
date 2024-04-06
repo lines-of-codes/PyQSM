@@ -5,7 +5,7 @@ import os
 
 from PySide6 import QtAsyncio
 from PySide6.QtGui import QIcon
-from PySide6.QtWidgets import QApplication, QMainWindow, QTabBar, QMessageBox
+from PySide6.QtWidgets import QApplication, QMainWindow, QTabBar, QMessageBox, QStyleFactory
 
 from ui_mainwindow import Ui_MainWindow
 from CreateServerPage import CreateServerPage
@@ -56,8 +56,8 @@ class MainWindow(QMainWindow):
         self.ui.serverList.itemDoubleClicked.connect(self.serverDoubleClicked)
 
     def jreDialog(self):
-        self.jreDialog = JREDownloadDialog(self)
-        self.jreDialog.exec()
+        jreDialog = JREDownloadDialog(self)
+        jreDialog.exec()
 
     def newServerBtnClicked(self):
         tabIndex = self.ui.tabWidget.addTab(CreateServerPage(self), QIcon(":/imgs/icons/plus.svg"), "Create new server")
@@ -77,6 +77,7 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    app.setStyle(QStyleFactory.create("fusion"))
     widget = MainWindow()
     widget.show()
 
