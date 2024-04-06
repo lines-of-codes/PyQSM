@@ -6,6 +6,13 @@
         "app/resource.qrc",
         "app/CreateServerPage.py",
         "app/PaperMCApi.py",
-        "app/PurpurMCApi.py"
+        "app/PurpurMCApi.py",
+        "app/manageserver.ui",
+        "app/ManageServer.py",
+        "app/Constants.py",
+        "app/ServerProperties.py",
+        "app/JREDownloadDialog.ui",
+        "app/AzulMetadata.py",
+        "app/JREDownloadDialog.py"
     ]
 }

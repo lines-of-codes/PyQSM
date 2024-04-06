@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>700</width>
+    <width>400</width>
     <height>500</height>
    </rect>
   </property>
@@ -480,157 +480,184 @@
    </palette>
   </property>
   <property name="windowTitle">
-   <string>Quick Minecraft Server Manager</string>
+   <string>Dialog</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="tabWidget">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>701</width>
-      <height>471</height>
-     </rect>
-    </property>
-    <property name="currentIndex">
-     <number>0</number>
-    </property>
-    <property name="tabsClosable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="homeTab">
-     <attribute name="title">
-      <string>Home</string>
-     </attribute>
-     <widget class="QPushButton" name="newServerBtn">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>101</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="text">
-       <string> New server</string>
-      </property>
-      <property name="icon">
-       <iconset resource="resource.qrc">
-        <normaloff>:/imgs/icons/plus.svg</normaloff>:/imgs/icons/plus.svg</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>12</width>
-        <height>12</height>
-       </size>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="importServerBtn">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>10</y>
-        <width>121</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string> Import Server</string>
-      </property>
-      <property name="icon">
-       <iconset resource="resource.qrc">
-        <normaloff>:/imgs/icons/download.svg</normaloff>:/imgs/icons/download.svg</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>12</width>
-        <height>12</height>
-       </size>
-      </property>
-     </widget>
-     <widget class="QListWidget" name="serverList">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>40</y>
-        <width>671</width>
-        <height>391</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="refreshBtn">
-      <property name="geometry">
-       <rect>
-        <x>569</x>
-        <y>10</y>
-        <width>111</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string> Refresh List</string>
-      </property>
-      <property name="icon">
-       <iconset resource="resource.qrc">
-        <normaloff>:/imgs/icons/reload.svg</normaloff>:/imgs/icons/reload.svg</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>12</width>
-        <height>12</height>
-       </size>
-      </property>
-     </widget>
-    </widget>
-   </widget>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
-  <widget class="QMenuBar" name="menuBar">
+  <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>700</width>
-     <height>22</height>
+     <x>10</x>
+     <y>460</y>
+     <width>371</width>
+     <height>32</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuJava">
-    <property name="title">
-     <string>Java</string>
-    </property>
-    <addaction name="actionInstall_Java"/>
-   </widget>
-   <widget class="QMenu" name="menuAbout">
-    <property name="title">
-     <string>About</string>
-    </property>
-    <addaction name="actionAbout_PyQSM"/>
-    <addaction name="actionAbout_Qt"/>
-   </widget>
-   <addaction name="menuJava"/>
-   <addaction name="menuAbout"/>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   </property>
   </widget>
-  <action name="actionAbout_PyQSM">
-   <property name="text">
-    <string>About PyQSM</string>
+  <widget class="QGroupBox" name="jreProviderBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>371</width>
+     <height>61</height>
+    </rect>
    </property>
-  </action>
-  <action name="actionAbout_Qt">
-   <property name="text">
-    <string>About Qt</string>
+   <property name="title">
+    <string>JRE Provider</string>
    </property>
-  </action>
-  <action name="actionInstall_Java">
-   <property name="text">
-    <string>Install Java</string>
+   <widget class="QRadioButton" name="zulu">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>131</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Azul Zulu</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="temurin">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>131</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Eclipse Temurin</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="microsoft">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>40</y>
+      <width>131</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Microsoft OpenJDK</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="amazon">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>20</y>
+      <width>131</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Amazon Corretto</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QListWidget" name="jreList">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>130</y>
+     <width>371</width>
+     <height>321</height>
+    </rect>
    </property>
-  </action>
+  </widget>
+  <widget class="QComboBox" name="jreVersionSelect">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>100</y>
+     <width>71</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Java 22</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Java 21 (LTS)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Java 17 (LTS)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Java 11 (LTS)</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Java 8</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>80</y>
+     <width>54</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Version</string>
+   </property>
+  </widget>
  </widget>
- <resources>
-  <include location="resource.qrc"/>
- </resources>
- <connections/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Dialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Dialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
