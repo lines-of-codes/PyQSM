@@ -13,6 +13,8 @@
         "app/ServerProperties.py",
         "app/JREDownloadDialog.ui",
         "app/AzulMetadata.py",
-        "app/JREDownloadDialog.py"
+        "app/JREDownloadDialog.py",
+        "app/FabricMetadata.py",
+        "app/AdoptiumAPI.py"
     ]
 }

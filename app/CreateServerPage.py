@@ -4,6 +4,7 @@ from PySide6.QtWidgets import QMessageBox
 from ui_createserverpage import Ui_CreateServerPage
 import PaperMCApi
 import PurpurMCApi
+import FabricMetadata
 import asyncio
 import shutil
 import json
@@ -121,6 +122,10 @@ class CreateServerPage(QtWidgets.QWidget):
     def handleDownloadPurpur(minecraftVersion, build, location):
         PurpurMCApi.downloadBuild(minecraftVersion, build, location)
 
+    @staticmethod
+    def handleDownloadFabric(minecraftVersion, loaderVersion, location):
+        FabricMetadata.downloadBuild(minecraftVersion, loaderVersion, location)
+
     def onBrowseFileBtnClicked(self):
         fileName, _ = QtWidgets.QFileDialog.getOpenFileName(self, "Select server .jar file", "", "JAR Archive (*.jar)")
 
@@ -146,6 +151,9 @@ class CreateServerPage(QtWidgets.QWidget):
     async def handleLoaderPurpur(self):
         self.ui.minecraftVersionList.addItems(PurpurMCApi.getAvailableMinecraftVersions())
 
+    async def handleLoaderFabric(self):
+        self.ui.minecraftVersionList.addItems(FabricMetadata.getAvailableMinecraftVersions())
+
     async def onMinecraftVersionChange(self, version):
         if not version:
             return
@@ -166,3 +174,6 @@ class CreateServerPage(QtWidgets.QWidget):
 
     async def handleVersionPurpur(self, minecraftVersion):
         self.ui.buildList.addItems(PurpurMCApi.getAvailableBuilds(minecraftVersion))
+
+    async def handleVersionFabric(self, minecraftVersion):
+        self.ui.buildList.addItems(FabricMetadata.getAvailableLoaderVersion(minecraftVersion))

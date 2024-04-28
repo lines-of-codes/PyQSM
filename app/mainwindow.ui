@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>700</width>
-    <height>500</height>
+    <height>525</height>
    </rect>
   </property>
   <property name="palette">
@@ -489,7 +489,7 @@
       <x>0</x>
       <y>0</y>
       <width>701</width>
-      <height>471</height>
+      <height>481</height>
      </rect>
     </property>
     <property name="currentIndex">

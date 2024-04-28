@@ -9,7 +9,7 @@ from PySide6 import QtWidgets, QtGui
 from PySide6.QtCore import QObject, QThread, Signal, Slot
 from PySide6.QtWidgets import QMessageBox
 from ui_manageserver import Ui_ManageServer
-from Constants import LOADER_ICONS
+from Constants import LOADER_ICONS, JVM_ARGS
 from ServerProperties import ServerProperties
 
 class ProcessOutputChecker(QObject):
@@ -50,13 +50,23 @@ class ManageServer(QtWidgets.QWidget):
         self.ui.serverLabel.setText(serverData["name"])
         self.ui.backupList.horizontalHeader().setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
         self.ui.serverInfoLabel.setText(f'{serverData["loaderType"]} {serverData["minecraftVersion"]} Build {serverData["loaderVersion"]}')
-        self.ui.modLoaderIcon.setPixmap(QtGui.QPixmap(LOADER_ICONS[serverData["loaderType"]]))
+        loaderIcon = LOADER_ICONS.get(serverData["loaderType"])
+        if loaderIcon is not None:
+            self.ui.modLoaderIcon.setPixmap(QtGui.QPixmap())
 
         self.ui.initialHeapSizeSlider.valueChanged.connect(self.initialHeapSizeChange)
         self.ui.maxHeapSizeSlider.valueChanged.connect(self.maxHeapSizeChange)
 
         self.ui.serverToggleBtn.clicked.connect(self.startButtonClicked)
         self.ui.openServerDirBtn.clicked.connect(self.openServerDir)
+
+        self.ui.argsPresets.currentTextChanged.connect(self.setArgsPreset)
+
+    def setArgsPreset(self, text):
+        if text == "Custom":
+            return
+
+        self.ui.argsEdit.setPlainText(JVM_ARGS[text])
 
     def openServerDir(self):
         PLATFORMS = {
@@ -121,6 +131,12 @@ class ManageServer(QtWidgets.QWidget):
         self.jarDir = os.path.dirname(self.serverData["jarFileLocation"])
         self.eulaAgreed = False
         eulaFile = f"{self.jarDir}/eula.txt"
+
+        if not os.path.isfile(eulaFile):
+            with open(eulaFile, "w") as f:
+                eula = ServerProperties()
+                eula.values["eula"] = False
+                f.write(str(eula))
 
         with open(eulaFile, "r") as f:
             eula = ServerProperties()

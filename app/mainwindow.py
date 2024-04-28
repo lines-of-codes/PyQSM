@@ -72,7 +72,11 @@ class MainWindow(QMainWindow):
 
     def serverDoubleClicked(self, server):
         serverData = self.serverList[server.text()]
-        tabIndex = self.ui.tabWidget.addTab(ManageServer(self, serverData), QIcon(LOADER_ICONS[serverData["loaderType"]]), serverData["name"])
+        icon = LOADER_ICONS.get(serverData["loaderType"])
+        if icon is None:
+            tabIndex = self.ui.tabWidget.addTab(ManageServer(self, serverData), serverData["name"])
+        else:
+            tabIndex = self.ui.tabWidget.addTab(ManageServer(self, serverData), QIcon(LOADER_ICONS[serverData["loaderType"]]), serverData["name"])
         self.ui.tabWidget.setCurrentIndex(tabIndex)
 
 if __name__ == "__main__":
